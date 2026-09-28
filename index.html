@@ -3,573 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>韋銘 ｜ 宮廟數位化 ‧ 維護工程師</title>
-<meta name="description" content="唯一同時懂宮廟文化、懂傳統現場、又能低成本動手做自動化的人。宮廟報名、財務報表、內部管理、LINE 通知一手包，還有人固定顧著。">
+<meta name="description" content="韋銘，宮廟數位化維護工程師。把報名、後台、每日關帳、稽核與信眾關懷串成有人持續顧著的系統。">
+<meta name="theme-color" content="#171a17">
+<title>韋銘｜宮廟數位化維護工程師</title>
 <style>
-  :root{
-    --ink:#1F2933;      /* 主文字 */
-    --ink-soft:#4A5560; /* 次文字 */
-    --muted:#6B7280;    /* 淡文字 */
-    --gold:#8A6D1F;     /* 金 */
-    --gold-soft:#B08D3A;
-    --brown:#2E2A22;    /* 深棕 */
-    --cream:#F3F0E8;    /* 米 */
-    --paper:#FBFAF6;    /* 底 */
-    --line:#E4DFD2;
-    --card:#FFFFFF;
-    --shadow:0 1px 3px rgba(46,42,34,.06),0 8px 30px rgba(46,42,34,.05);
-  }
+  :root{--ink:#20251f;--ink-soft:#535b51;--muted:#72796f;--night:#171a17;--night-2:#232820;--jade:#356d58;--jade-soft:#e7f0eb;--gold:#a67b2d;--gold-soft:#ead9b5;--cream:#f2eee4;--paper:#fbfaf6;--white:#fff;--line:#ddd8cb;--danger:#a14d42;--shadow:0 14px 42px rgba(26,31,25,.08);--radius:22px}
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC","Segoe UI",system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    font-size:17px;
-    line-height:1.85;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--gold);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
-  section{padding:76px 0}
-  .eyebrow{
-    font-size:14px;letter-spacing:.18em;color:var(--gold);
-    font-weight:700;text-transform:uppercase;margin-bottom:14px;
-  }
-  h2{font-size:29px;line-height:1.4;letter-spacing:.01em;margin-bottom:8px;color:var(--brown)}
-  .lead{color:var(--ink-soft);font-size:18px;margin-top:12px;max-width:660px}
-
-  /* ---------- Nav ---------- */
-  nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(251,250,246,.9);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{max-width:920px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-weight:800;color:var(--brown);font-size:18px;letter-spacing:.04em}
-  .brand span{color:var(--gold)}
-  .nav-links{display:flex;gap:24px}
-  .nav-links a{color:var(--ink-soft);font-size:15px;font-weight:600}
-  .nav-links a:hover{color:var(--gold);text-decoration:none}
-  @media(max-width:640px){.nav-links{display:none}}
-
-  /* ---------- Hero ---------- */
-  .hero{
-    background:
-      radial-gradient(1200px 400px at 80% -10%,rgba(138,109,31,.10),transparent 60%),
-      linear-gradient(180deg,var(--cream),var(--paper));
-    border-bottom:1px solid var(--line);
-    padding:92px 0 84px;
-  }
-  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
-  .tag{
-    background:var(--brown);color:#F6F1E4;font-size:14px;font-weight:600;
-    padding:6px 14px;border-radius:999px;letter-spacing:.03em;
-  }
-  .hero h1{font-size:44px;line-height:1.25;color:var(--brown);letter-spacing:.01em;margin-bottom:22px}
-  .hero h1 .hi{color:var(--gold)}
-  .hero .quote{
-    font-size:20px;line-height:1.8;color:var(--ink);max-width:720px;
-    border-left:4px solid var(--gold);padding-left:20px;margin:26px 0 30px;
-  }
-  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
-  .btn{
-    display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;font-size:16px;
-  }
-  .btn-primary{background:var(--gold);color:#fff;box-shadow:var(--shadow)}
-  .btn-primary:hover{background:var(--gold-soft);text-decoration:none}
-  .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:var(--card)}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);text-decoration:none}
-  @media(max-width:640px){.hero h1{font-size:33px}.hero .quote{font-size:18px}}
-
-  /* ---------- Moat cards ---------- */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
-  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:26px 24px;box-shadow:var(--shadow);
-  }
-  .card .num{font-size:15px;font-weight:800;color:var(--gold);letter-spacing:.1em}
-  .card h3{font-size:19px;margin:10px 0 8px;color:var(--brown)}
-  .card p{color:var(--ink-soft);font-size:16px}
-  .moat-note{
-    margin-top:30px;background:var(--cream);border-radius:14px;padding:22px 24px;
-    color:var(--ink);font-size:17px;
-  }
-  .moat-note b{color:var(--gold)}
-
-  /* ---------- Projects ---------- */
-  .sec-alt{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .flagship{
-    background:var(--brown);color:#EFE9DA;border-radius:16px;padding:34px 32px;margin-top:30px;
-    box-shadow:0 12px 40px rgba(46,42,34,.18);
-  }
-  .flagship .badge{display:inline-block;background:var(--gold);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.08em;margin-bottom:14px}
-  .flagship h3{color:#fff;font-size:23px;margin-bottom:12px}
-  .flagship p{color:#D9D2C1;font-size:16px;max-width:680px}
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-  @media(max-width:640px){.ba{grid-template-columns:1fr}}
-  .ba > div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px 20px}
-  .ba .k{font-size:13px;letter-spacing:.1em;font-weight:700;margin-bottom:8px}
-  .ba .before .k{color:#C9A24B}
-  .ba .after .k{color:#E7C877}
-  .ba ul{list-style:none;font-size:15px;color:#DDD6C6;line-height:1.9}
-  .ba li{padding-left:18px;position:relative}
-  .ba li::before{content:"‧";position:absolute;left:4px;color:var(--gold-soft)}
-
-  .modules{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
-  @media(max-width:640px){.modules{grid-template-columns:1fr}}
-  .mod{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
-  .mod .ico{font-size:22px;margin-bottom:6px}
-  .mod h4{font-size:18px;color:var(--brown);margin-bottom:6px}
-  .mod p{font-size:15px;color:var(--ink-soft)}
-
-  .stack{
-    margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;
-    font-size:15px;color:var(--muted);
-  }
-  .chip{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-weight:600;color:var(--ink-soft)}
-
-  /* ---------- Pricing ---------- */
-  .price-note{color:var(--muted);font-size:15px;margin-top:6px}
-  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-  @media(max-width:760px){.tier-grid{grid-template-columns:1fr}}
-  .tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;box-shadow:var(--shadow);position:relative}
-  .tier.featured{border:2px solid var(--gold);box-shadow:0 12px 40px rgba(138,109,31,.16)}
-  .tier .flag{position:absolute;top:-12px;right:20px;background:var(--gold);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
-  .tier .tname{font-size:19px;font-weight:800;color:var(--brown)}
-  .tier .tprice{font-size:26px;font-weight:800;color:var(--gold);margin:10px 0 4px}
-  .tier .tprice small{font-size:15px;color:var(--muted);font-weight:600}
-  .tier p{font-size:15px;color:var(--ink-soft);margin-top:10px}
-
-  .build{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-  .build .row{display:flex;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid var(--line);font-size:16px}
-  .build .row:last-child{border-bottom:none}
-  .build .row .label{color:var(--ink)}
-  .build .row .val{color:var(--gold);font-weight:700;white-space:nowrap}
-  .build .head{background:var(--brown);color:#F6F1E4;font-weight:700}
-  .build .head .val{color:#E7C877}
-
-  .scope{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-  @media(max-width:640px){.scope{grid-template-columns:1fr}}
-  .scope > div{border-radius:14px;padding:20px 22px;font-size:15px}
-  .scope .inc{background:#F0F3EC;border:1px solid #D8E0CC}
-  .scope .exc{background:#F7F0EC;border:1px solid #E6D5C9}
-  .scope h4{font-size:16px;margin-bottom:10px}
-  .scope .inc h4{color:#3E6B2E}
-  .scope .exc h4{color:#9A5B33}
-  .scope ul{list-style:none;line-height:1.9;color:var(--ink-soft)}
-  .scope li{padding-left:20px;position:relative}
-  .scope .inc li::before{content:"✓";position:absolute;left:0;color:#4F8A3A;font-weight:700}
-  .scope .exc li::before{content:"→";position:absolute;left:0;color:#B5714A;font-weight:700}
-
-  /* ---------- Fears ---------- */
-  .fear{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px;box-shadow:var(--shadow);margin-top:18px}
-  .fear .q{font-size:19px;font-weight:800;color:var(--brown);margin-bottom:8px}
-  .fear .q .mk{color:var(--gold);font-weight:800}
-  .fear p{color:var(--ink-soft);font-size:16px}
-  .fear.ace{border-left:5px solid var(--gold)}
-  .fear .ace-tag{display:inline-block;background:var(--gold);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle}
-
-  /* ---------- Architecture diagram (native) ---------- */
-  .arch{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 26px;box-shadow:var(--shadow)}
-  .arch-head{text-align:center;margin-bottom:8px}
-  .arch-head h3{font-size:20px;color:var(--brown)}
-  .arch-head p{font-size:14px;color:var(--muted);margin-top:4px}
-  .arch-flow{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:24px}
-  .node{
-    background:#FCFBF7;border:1.5px solid var(--line);border-radius:12px;
-    padding:16px 18px;min-width:150px;text-align:center;display:flex;flex-direction:column;justify-content:center;
-  }
-  .node .nt{font-weight:800;color:var(--brown);font-size:17px;letter-spacing:.02em}
-  .node .ns{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5}
-  .node.hub{background:#FBEEF1;border-color:#E7B9C4}
-  .node.hub .nt{color:#B0446A}
-  .node.db{background:#F1F3EC;border-color:#CBD6BC}
-  .node.db .nt{color:#4B6B33}
-  .conn{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-weight:700;min-width:56px}
-  .conn .ar{font-size:22px;color:var(--gold);line-height:1}
-  .arch-sub{text-align:center;color:var(--muted);font-size:13px;font-weight:700;margin:18px 0 4px}
-  .arch-sub .ar{color:var(--gold);font-size:18px}
-  .arch-branches{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:12px}
-  .branch{display:flex;flex-direction:column;align-items:center;gap:8px}
-  .branch .blabel{font-size:12px;font-weight:700;color:var(--gold)}
-  .arch-pill{
-    margin:26px auto 0;max-width:520px;text-align:center;background:#FBEEF1;color:#B0446A;
-    border:1px solid #E7B9C4;border-radius:999px;padding:12px 22px;font-weight:800;font-size:15.5px;
-  }
-  .arch-cap{margin-top:16px;font-size:14.5px;color:var(--muted);text-align:center}
-  .arch-cap b{color:var(--gold)}
-  @media(max-width:640px){
-    .arch-flow{flex-direction:column;align-items:center}
-    .conn{flex-direction:row;gap:6px;min-width:0;padding:2px 0}
-    .conn .ar{transform:rotate(90deg)}
-    .node{width:100%;max-width:280px}
-  }
-
-  /* ---------- Cross-industry ---------- */
-  .xp-head{margin-top:58px}
-  .xp-head h3{font-size:22px;color:var(--brown);margin-bottom:6px}
-  .xp-head p{color:var(--ink-soft);font-size:16px;max-width:620px}
-  .ind{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:var(--gold);margin-bottom:8px}
-
-  /* ---------- Notion ---------- */
-  .notion-card{
-    margin-top:30px;display:flex;align-items:center;gap:24px;
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:26px 28px;box-shadow:var(--shadow);
-  }
-  @media(max-width:640px){.notion-card{flex-direction:column;align-items:flex-start;gap:18px;text-align:left}}
-  .notion-card .nbook{font-size:46px;line-height:1}
-  .notion-card .nbody{flex:1}
-  .notion-card h3{font-size:20px;color:var(--brown);margin-bottom:6px}
-  .notion-card .ntopics{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-  .notion-card .ntopics span{background:var(--cream);border:1px solid var(--line);border-radius:7px;padding:5px 12px;font-size:14px;font-weight:600;color:var(--ink-soft)}
-  .notion-card .nbtn{white-space:nowrap}
-  .notion-why{margin-top:24px;color:var(--ink-soft);font-size:16px;max-width:660px}
-  .notion-why b{color:var(--gold)}
-
-  /* ---------- Contact ---------- */
-  .contact{background:var(--brown);color:#EFE9DA;text-align:center}
-  .contact h2{color:#fff}
-  .contact .lead{color:#D9D2C1;margin:14px auto 30px}
-  .contact .btn-primary{background:var(--gold)}
-  .contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px}
-  .contact-links a{color:#EFE9DA;border:1.5px solid rgba(255,255,255,.22);border-radius:10px;padding:12px 22px;font-weight:600}
-  .contact-links a:hover{border-color:var(--gold);color:#fff;text-decoration:none}
-
-  footer{background:#231F19;color:#8C8577;text-align:center;font-size:14px;padding:28px 22px}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{color:var(--ink);background:var(--paper);font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC","Segoe UI",sans-serif;font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:4px}
+  .skip{position:absolute;left:-9999px;top:8px;background:var(--white);padding:8px 14px;z-index:100}.skip:focus{left:12px}
+  .wrap{width:min(1120px,calc(100% - 44px));margin:0 auto}section{padding:96px 0}.alt{background:var(--cream);border-block:1px solid var(--line)}
+  .eyebrow{color:var(--jade);font-size:13px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+  h2{font-size:clamp(30px,4vw,48px);line-height:1.25;letter-spacing:-.025em;color:var(--night)}
+  .lead{max-width:720px;margin-top:18px;color:var(--ink-soft);font-size:18px}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}.section-head .lead{margin-top:0;max-width:430px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:800;transition:.2s ease}.btn-primary{background:var(--gold);color:#fff;box-shadow:0 9px 22px rgba(166,123,45,.22)}.btn-primary:hover{background:#8e6824;transform:translateY(-2px)}.btn-light{background:#fff;border:1px solid var(--line)}.btn-light:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(251,250,246,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(221,216,203,.86)}
+  .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:900;letter-spacing:.04em;font-size:19px}.brand span{color:var(--gold)}.nav-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:800;color:var(--ink-soft)}.nav-links a:hover{color:var(--jade)}.nav-cta{background:var(--night);color:#fff!important;padding:8px 15px;border-radius:9px}
+  .hero{padding:88px 0 72px;background:radial-gradient(circle at 80% 6%,rgba(166,123,45,.15),transparent 27%),radial-gradient(circle at 12% 80%,rgba(53,109,88,.12),transparent 25%),linear-gradient(180deg,#f4efe3 0%,var(--paper) 82%)}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:64px}.hero-grid>*{min-width:0}.kicker{display:inline-flex;align-items:center;gap:9px;border:1px solid #d7c9a8;background:rgba(255,255,255,.6);padding:7px 13px;border-radius:999px;color:#715622;font-size:14px;font-weight:800;margin-bottom:24px}.kicker-dot{width:8px;height:8px;background:var(--jade);border-radius:50%;box-shadow:0 0 0 4px rgba(53,109,88,.13)}
+  h1{font-size:clamp(42px,6vw,68px);line-height:1.13;letter-spacing:-.045em;color:var(--night)}h1 em{color:var(--jade);font-style:normal}.hero-copy{font-size:20px;color:var(--ink-soft);max-width:650px;margin:26px 0 28px}.hero-copy b{color:var(--ink)}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.hero-note{margin-top:22px;color:var(--muted);font-size:14px}
+  .console{width:100%;min-width:0;overflow:hidden;background:var(--night);border-radius:28px;padding:18px;box-shadow:0 28px 70px rgba(23,26,23,.25);transform:rotate(1deg)}.console-top{display:flex;align-items:center;justify-content:space-between;color:#b7bfaf;font-size:12px;padding:3px 5px 15px}.lights{display:flex;gap:6px}.lights i{width:8px;height:8px;border-radius:50%;background:#4d554b}.lights i:first-child{background:#b57a45}.lights i:nth-child(2){background:#b59d45}.lights i:last-child{background:#5f8b71}.console-body{min-width:0;background:#f7f4ec;border-radius:18px;padding:22px}.console-title{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 14px;margin-bottom:18px}.console-title strong{font-size:18px}.live{white-space:nowrap;font-size:12px;font-weight:900;color:var(--jade);background:var(--jade-soft);padding:4px 9px;border-radius:999px}.mini-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.mini-stat{min-width:0;background:#fff;border:1px solid #e7e2d7;border-radius:12px;padding:13px 11px}.mini-stat span{display:block;color:var(--muted);font-size:11px;line-height:1.3}.mini-stat b{display:block;margin-top:5px;font-size:21px;line-height:1.2;color:var(--night)}.mini-stat.alert b{color:var(--danger)}.bars{margin-top:18px;background:#fff;border:1px solid #e7e2d7;border-radius:14px;padding:15px}.bar-row{display:grid;grid-template-columns:74px minmax(0,1fr) 42px;gap:10px;align-items:center;font-size:11px;color:var(--muted);margin:10px 0}.track{height:8px;background:#eeeae1;border-radius:99px;overflow:hidden}.fill{height:100%;background:var(--jade);border-radius:99px}.fill.gold{background:var(--gold)}.console-foot{margin-top:12px;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:11px}.check{flex:0 0 18px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--jade);color:white;font-weight:900}
+  .proof-strip{padding:0 0 76px}.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);overflow:hidden}.proof-item{padding:24px 25px;border-right:1px solid var(--line)}.proof-item:last-child{border-right:0}.proof-item b{display:block;font-size:28px;color:var(--night);line-height:1.2}.proof-item span{display:block;margin-top:7px;color:var(--muted);font-size:14px;line-height:1.5}
+  .case-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}.case-story{background:var(--night);color:#eef0e9;border-radius:var(--radius);padding:38px;position:relative;overflow:hidden}.case-story:after{content:"玄";position:absolute;right:-12px;bottom:-74px;font-size:230px;font-weight:900;color:rgba(255,255,255,.035);line-height:1}.badge{display:inline-block;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;letter-spacing:.05em}.badge-live{background:#dcebe2;color:#2d604b}.badge-ready{background:#f2e2bd;color:#7f5c18}.case-story .badge{background:rgba(234,217,181,.15);color:#efd59c;border:1px solid rgba(234,217,181,.25)}.case-story h3{font-size:30px;line-height:1.35;margin:20px 0 16px}.case-story p{color:#c8cdc3}.case-points{display:grid;gap:11px;margin-top:26px;position:relative;z-index:2}.case-point{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);padding:13px 15px;border-radius:12px;font-size:15px;color:#e0e4dc}.case-point i{color:#dfbd76;font-style:normal;font-weight:900}
+  .journey{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}.journey h3{font-size:22px;margin-bottom:8px}.journey-intro{font-size:15px;color:var(--muted);margin-bottom:24px}.journey-list{display:grid}.journey-item{display:grid;grid-template-columns:44px 1fr;gap:15px;position:relative;padding-bottom:18px}.journey-item:last-child{padding-bottom:0}.journey-item:not(:last-child):after{content:"";position:absolute;left:21px;top:42px;bottom:0;width:2px;background:#d9e5dd}.journey-num{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:var(--jade-soft);color:var(--jade);font-size:13px;font-weight:900}.journey-item h4{font-size:17px;line-height:1.35;margin:2px 0 4px}.journey-item p{font-size:14px;color:var(--muted);line-height:1.55}
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.work-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 8px 26px rgba(26,31,25,.055);transition:.2s ease}.work-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.work-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.work-icon{width:48px;height:48px;display:grid;place-items:center;background:var(--cream);border-radius:14px;font-size:24px}.work-card h3{font-size:23px;line-height:1.35}.work-card>p{color:var(--ink-soft);font-size:15px;margin-top:10px}.work-proof{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.work-proof span{font-size:12px;font-weight:800;color:#5f665d;border:1px solid var(--line);background:var(--paper);border-radius:7px;padding:5px 9px}.work-note{margin-top:42px;background:#e9e4d7;border-radius:16px;padding:20px 24px;color:#565b52;font-size:15px}.work-note b{color:var(--night)}
+  .system-map{background:var(--night);border-radius:28px;padding:44px;color:#fff;box-shadow:0 22px 60px rgba(23,26,23,.18)}.system-map .eyebrow{color:#dfbd76}.system-map h2{color:#fff}.system-map .lead{color:#bfc6bb}.map-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}.map-card{background:var(--night-2);border:1px solid #3b4238;border-radius:18px;padding:23px 20px;position:relative}.map-card:not(:last-child):after{content:"→";position:absolute;right:-20px;top:50%;transform:translateY(-50%);z-index:3;color:#dfbd76;font-size:22px;font-weight:900}.map-card .step{font-size:11px;letter-spacing:.12em;color:#dfbd76;font-weight:900}.map-card h3{font-size:19px;margin:9px 0 7px}.map-card p{font-size:13px;color:#adb5aa;line-height:1.6}.stack-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.stack-row span{border:1px solid #42493f;background:#20241e;color:#cbd1c7;border-radius:8px;padding:6px 11px;font-size:12px;font-weight:800}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.process-card{padding:27px 22px;border-top:3px solid var(--jade);background:#fff;border-radius:4px 4px 16px 16px;box-shadow:0 8px 26px rgba(26,31,25,.055)}.process-card b{display:block;color:var(--gold);font-size:13px;letter-spacing:.1em}.process-card h3{font-size:19px;margin:9px 0 8px}.process-card p{font-size:14px;color:var(--muted)}.process-quote{margin-top:30px;border-left:4px solid var(--gold);padding:6px 0 6px 20px;font-size:20px;font-weight:800;color:var(--night)}
+  .service-box{display:grid;grid-template-columns:1fr 1fr;background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}.service-main{padding:42px}.service-main h3{font-size:30px;line-height:1.35}.service-main .price{font-size:42px;font-weight:900;color:var(--jade);line-height:1.2;margin:20px 0 4px}.service-main .price small{font-size:16px;color:var(--muted)}.service-main>p{color:var(--ink-soft)}.warranty{padding:42px;background:var(--jade);color:#fff;display:flex;flex-direction:column;justify-content:center}.warranty .big{font-size:72px;line-height:1;font-weight:900;color:#fff}.warranty .big small{font-size:24px}.warranty h3{font-size:24px;margin:14px 0 10px}.warranty p{color:#dce9e2}.include-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}.include{border:1px solid var(--line);border-radius:15px;padding:18px 20px;background:var(--paper)}.include h4{font-size:15px;margin-bottom:8px}.include ul{list-style:none;color:var(--ink-soft);font-size:14px}.include li{padding-left:18px;position:relative;margin:4px 0}.include li:before{content:"✓";position:absolute;left:0;color:var(--jade);font-weight:900}.include.no li:before{content:"→";color:var(--gold)}
+  .lab-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}.lab-card{border:1px solid var(--line);border-radius:16px;padding:21px;background:#fff}.lab-card .lab-tag{font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--gold)}.lab-card h3{font-size:17px;line-height:1.4;margin:8px 0}.lab-card p{font-size:13px;color:var(--muted);line-height:1.6}.notion-link{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid var(--line);border-radius:16px;padding:18px 22px;background:var(--cream)}.notion-link b{display:block}.notion-link span{font-size:14px;color:var(--muted)}.notion-link strong{color:var(--jade);white-space:nowrap}
+  .faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}.faq{border:1px solid var(--line);background:#fff;border-radius:17px;padding:23px}.faq h3{font-size:18px;line-height:1.45}.faq p{font-size:14px;color:var(--ink-soft);margin-top:9px}
+  .contact{background:var(--night);color:#fff;text-align:center;position:relative;overflow:hidden}.contact:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.06);border-radius:50%;left:-180px;top:-220px;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.02)}.contact .eyebrow{color:#dfbd76}.contact h2{color:#fff}.contact .lead{color:#c1c7bd;margin:18px auto 28px}.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}.contact-links a{border:1px solid #41483f;border-radius:11px;padding:11px 18px;font-weight:800;font-size:14px}.contact-links a:hover{border-color:#dfbd76;color:#dfbd76}footer{background:#111310;color:#80877e;text-align:center;padding:25px;font-size:13px}
+  @media(max-width:940px){.nav-links a:not(.nav-cta){display:none}.hero-grid,.case-grid,.service-box{grid-template-columns:1fr}.hero-grid{gap:42px}.console{transform:none;max-width:650px}.proof-grid{grid-template-columns:repeat(2,1fr)}.proof-item:nth-child(2){border-right:0}.proof-item:nth-child(-n+2){border-bottom:1px solid var(--line)}.map-flow,.process-grid,.lab-grid{grid-template-columns:repeat(2,1fr)}.map-card:nth-child(2):after{display:none}}
+  @media(max-width:720px){section{padding:72px 0}.wrap{width:min(100% - 30px,1120px)}.nav-links a:not(.nav-cta){display:none}.hero{padding-top:64px}.hero-copy{font-size:18px}.console-body{padding:18px}.bar-row{grid-template-columns:58px minmax(0,1fr) 34px;gap:7px}.section-head{display:block}.section-head .lead{margin-top:14px}.work-grid,.faq-grid,.include-grid{grid-template-columns:1fr}.map-flow,.process-grid,.lab-grid{grid-template-columns:1fr}.map-card:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-24px;transform:translateX(-50%)}.mini-stats{grid-template-columns:1fr}.proof-grid{grid-template-columns:1fr}.proof-item{border-right:0!important;border-bottom:1px solid var(--line)!important}.proof-item:last-child{border-bottom:0!important}.system-map,.case-story,.journey,.service-main,.warranty{padding:28px 23px}.warranty .big{font-size:58px}.notion-link{align-items:flex-start;flex-direction:column}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.work-card{transition:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">跳到主要內容</a>
+<nav aria-label="主要導覽"><div class="wrap nav-inner"><a class="brand" href="#top" aria-label="回到首頁">韋<span>銘</span></a><div class="nav-links"><a href="#case">旗艦案例</a><a href="#work">系統成果</a><a href="#process">交付方式</a><a href="#service">服務方案</a><a class="nav-cta" href="#contact">聊聊需求</a></div></div></nav>
 
-<nav>
-  <div class="nav-inner">
-    <div class="brand">韋<span>銘</span></div>
-    <div class="nav-links">
-      <a href="#moat">我的護城河</a>
-      <a href="#work">做過的事</a>
-      <a href="#notion">Notion 筆記</a>
-      <a href="#service">服務方案</a>
-      <a href="#fears">常見疑慮</a>
-      <a href="#contact">聯絡我</a>
+<main id="main">
+  <header class="hero" id="top"><div class="wrap hero-grid">
+    <div><div class="kicker"><span class="kicker-dot"></span>維護工程師 × 宮廟資訊人員</div><h1>從報名、對帳，<br>一路做到<em>信眾關懷</em>。</h1><p class="hero-copy">我不是只交一張表單，而是把宮廟每天真的會遇到的事情，串成一套<b>有人持續顧著、出問題找得到人</b>的數位流程。</p><div class="hero-actions"><a class="btn btn-primary" href="#case">看完整案例 <span aria-hidden="true">→</span></a><a class="btn btn-light" href="#service">看合作方式</a></div><p class="hero-note">n8n（自架）＋ Google Apps Script ＋ Notion ＋ LINE</p></div>
+    <div class="console" aria-label="每日關帳介面示意"><div class="console-top"><span>每日關帳｜介面示意</span><div class="lights"><i></i><i></i><i></i></div></div><div class="console-body"><div class="console-title"><strong>今天的資料，有沒有對上？</strong><span class="live">● 系統運作中</span></div><div class="mini-stats"><div class="mini-stat"><span>納入活動</span><b>10</b></div><div class="mini-stat"><span>讀取速度</span><b>約 9 秒</b></div><div class="mini-stat alert"><span>待確認</span><b>自動標記</b></div></div><div class="bars"><div class="bar-row"><span>已繳款</span><div class="track"><div class="fill" style="width:86%"></div></div><b>彙整</b></div><div class="bar-row"><span>應收款</span><div class="track"><div class="fill gold" style="width:62%"></div></div><b>追蹤</b></div><div class="bar-row"><span>資料完整</span><div class="track"><div class="fill" style="width:94%"></div></div><b>檢查</b></div></div><div class="console-foot"><span class="check">✓</span><span>示意畫面，不顯示真實帳務資料</span></div></div></div>
+  </div></header>
+
+  <div class="proof-strip"><div class="wrap proof-grid"><div class="proof-item"><b>10 個</b><span>活動資料來源<br>集中彙整</span></div><div class="proof-item"><b>32 → 9 秒</b><span>每日關帳首次載入<br>實測改善</span></div><div class="proof-item"><b>數百筆</b><span>跨活動資料<br>一次核對</span></div><div class="proof-item"><b>3 個月</b><span>買斷建置後<br>問題由我負責</span></div></div></div>
+
+  <section id="case"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Flagship case</div><h2>不是一套工具，<br>是整間廟的工作路徑。</h2></div><p class="lead">玄門真宗的系統不是一次做完，而是從真實現場長出來：哪裡重複抄、哪裡容易漏、哪裡對不起來，就把那一段接起來。</p></div>
+    <div class="case-grid"><article class="case-story"><span class="badge">玄門真宗｜旗艦案例</span><h3>他們不需要再找資訊公司，因為資訊組已經在裡面。</h3><p>從活動報名、點燈、法會與科期，到後台、關帳、稽核及內部管理，系統跟著現場持續調整，而不是交付後失聯。</p><div class="case-points"><div class="case-point"><i>01</i><span>資料從前台直接進系統，減少人工謄寫</span></div><div class="case-point"><i>02</i><span>付款、異動與操作人留下可追溯紀錄</span></div><div class="case-point"><i>03</i><span>跨活動關帳與稽核，不再逐張表格加總</span></div><div class="case-point"><i>04</i><span>新活動沿用既有積木，縮短重新建置時間</span></div></div></article>
+      <div class="journey"><h3>一筆報名資料，後面還有五段路</h3><p class="journey-intro">把每一段接起來，資料才真正成為能用的營運工具。</p><div class="journey-list"><div class="journey-item"><div class="journey-num">01</div><div><h4>信眾線上報名</h4><p>手機就能填，送出前再次確認，降低填錯機率。</p></div></div><div class="journey-item"><div class="journey-num">02</div><div><h4>資料自動進庫</h4><p>依活動規則整理欄位、金額與明細，減少人工重打。</p></div></div><div class="journey-item"><div class="journey-num">03</div><div><h4>同工後台處理</h4><p>查詢、修改、繳款與異動都有一致入口。</p></div></div><div class="journey-item"><div class="journey-num">04</div><div><h4>每日關帳</h4><p>跨活動集中看筆數、金額、待確認與異常資料。</p></div></div><div class="journey-item"><div class="journey-num">05</div><div><h4>財務稽核</h4><p>核對完成即可回寫，並保留日期與處理狀態。</p></div></div><div class="journey-item"><div class="journey-num">06</div><div><h4>後續關懷</h4><p>讓活動結束後的聯繫，不再散落在記憶與 LINE 裡。</p></div></div></div></div>
     </div>
-  </div>
-</nav>
+  </div></section>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="tags">
-      <span class="tag">維護工程師</span>
-      <span class="tag">宮廟資訊人員</span>
-      <span class="tag">兩寶爸</span>
-    </div>
-    <h1>把宮廟的紙本與混亂，<br>變成<span class="hi">有人固定顧著</span>的數位大腦。</h1>
-    <p class="quote">我不是「會 n8n / Notion 的人」，而是<b>唯一同時懂宮廟文化、懂傳統現場、又能低成本動手做自動化的人</b>。</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#service">看服務方案</a>
-      <a class="btn btn-ghost" href="#work">看做過的東西</a>
-    </div>
-  </div>
-</header>
+  <section class="alt" id="work"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Systems in practice</div><h2>已經做出來，正在使用或準備上線。</h2></div><p class="lead">不是功能清單，而是四個真實問題，以及現在怎麼被處理。</p></div>
+    <div class="work-grid">
+      <article class="work-card"><div class="work-top"><div class="work-icon">📊</div><span class="badge badge-live">已上線使用</span></div><h3>跨活動每日關帳</h3><p>把各活動不同的資料格式集中成同一張總表，快速找到筆數、金額、待確認與每筆均額異常。</p><div class="work-proof"><span>10 個活動來源</span><span>約 9 秒載入</span><span>Excel 匯出</span></div></article>
+      <article class="work-card"><div class="work-top"><div class="work-icon">✅</div><span class="badge badge-live">已完成驗證</span></div><h3>跨活動財務稽核</h3><p>一次整理數百筆待稽核資料，支援活動篩選、金額核對、勾選回寫與已繳款日期紀錄。</p><div class="work-proof"><span>批次處理</span><span>異常辨識</span><span>操作可追溯</span></div></article>
+      <article class="work-card"><div class="work-top"><div class="work-icon">🧩</div><span class="badge badge-live">內部生產工具</span></div><h3>報名表產生器</h3><p>輸入活動名稱、品項與規則，就能產出資料庫及可部署的活動專案，把「每次重寫」變成「勾選＋換皮」。</p><div class="work-proof"><span>設定檔化</span><span>專案自動產出</span><span>可重複部署</span></div></article>
+      <article class="work-card"><div class="work-top"><div class="work-icon">🤝</div><span class="badge badge-ready">準備上線</span></div><h3>信眾關懷系統</h3><p>依既有活動資料產生關懷名單，記錄聯繫結果與後續追蹤，讓活動結束後的關係能被好好接住。</p><div class="work-proof"><span>本機驗收完成</span><span>關懷紀錄</span><span>跨活動名單</span></div></article>
+    </div><div class="work-note"><b>狀態說明：</b>「已上線使用」代表已部署並有實際系統；「準備上線」代表程式與本機驗收完成，但尚未建立公開網址。我不把還沒上線的東西寫成已交付。</div>
+  </div></section>
 
-<!-- MOAT -->
-<section id="moat">
-  <div class="wrap">
-    <div class="eyebrow">Why me</div>
-    <h2>會技術的人多，懂宮廟的人少。</h2>
-    <p class="lead">兩者兼具、又願意親手做的，幾乎沒有。我的稀有性，來自這三件事同時長在同一個人身上。</p>
+  <section><div class="wrap system-map"><div class="eyebrow">One connected system</div><h2>表單只是入口，後面的流程才是價值。</h2><p class="lead">技術放在底下，人只需要看到清楚、好用、出了問題能追查的畫面。</p><div class="map-flow"><div class="map-card"><span class="step">STEP 01</span><h3>前台收資料</h3><p>手機表單、查詢頁、關閉頁，讓信眾不用學系統。</p></div><div class="map-card"><span class="step">STEP 02</span><h3>自動化處理</h3><p>驗證、拆分、通知與寫入，重複動作交給流程執行。</p></div><div class="map-card"><span class="step">STEP 03</span><h3>資料集中管理</h3><p>同工能查、能改、能追蹤，資料不再散落各處。</p></div><div class="map-card"><span class="step">STEP 04</span><h3>關帳與關懷</h3><p>資料回到營運現場，幫助核對、追蹤與後續聯繫。</p></div></div><div class="stack-row"><span>Google Apps Script</span><span>n8n 自架</span><span>Notion</span><span>LINE Bot</span><span>Google Sheet 備援</span></div></div></section>
 
-    <div class="grid3">
-      <div class="card">
-        <div class="num">01</div>
-        <h3>宮廟的自己人</h3>
-        <p>懂科期、法會、管委會怎麼運作，也懂——什麼可以動、什麼不能亂改。</p>
-      </div>
-      <div class="card">
-        <div class="num">02</div>
-        <h3>傳統現場的語言</h3>
-        <p>維護工程師背景，進過工廠、看過派工單與 LINE 群組怎麼亂。我講你聽得懂的話。</p>
-      </div>
-      <div class="card">
-        <div class="num">03</div>
-        <h3>低成本自動化的手</h3>
-        <p>n8n 自架 + GAS + Notion，主打省錢。不外包、自己動手，出事我自己修。</p>
-      </div>
-    </div>
+  <section class="alt" id="process"><div class="wrap"><div class="section-head"><div><div class="eyebrow">How I deliver</div><h2>做得快，也要讓下一次改得動。</h2></div><p class="lead">宮廟活動會變、欄位會變、人也會換。能長期維護，比第一天看起來厲害更重要。</p></div><div class="process-grid"><div class="process-card"><b>01｜先釐清</b><h3>把現場講成規格</h3><p>先確認誰在用、資料去哪裡、怎樣才算完成，再開始動工。</p></div><div class="process-card"><b>02｜再開發</b><h3>用可重複積木組裝</h3><p>活動名稱、價格與選項集中設定，降低下次換活動的成本。</p></div><div class="process-card"><b>03｜做驗收</b><h3>真的跑過才算完成</h3><p>檢查手機、桌機、資料寫入、回讀與異常情況，不只看程式碼。</p></div><div class="process-card"><b>04｜留紀錄</b><h3>版本與異動能追查</h3><p>規格、測試、部署與已知限制留下來，日後才不必重新猜。</p></div></div><div class="process-quote">「不是做完能開就算交付，而是半年後還知道怎麼修。」</div></div></section>
 
-    <div class="moat-note">
-      信任是這個市場最貴的東西——而且沒辦法用錢買。<b>我已經在裡面了。</b>
-    </div>
-  </div>
-</section>
+  <section id="service"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Service</div><h2>先買斷建置，安心用過再說。</h2></div><p class="lead">宮廟的經費要能向委員會交代，資料也不該因為某一天我不做了就消失。</p></div><div class="service-box"><div class="service-main"><h3>模組化買斷建置</h3><div class="price">NT$30,000 <small>起</small></div><p>可以先從最痛的一塊開始：報名、後台、報表、通知或內部管理，再依實際使用狀況增加模組。</p><div class="include-grid"><div class="include"><h4>建置包含</h4><ul><li>需求與流程整理</li><li>系統建置與部署</li><li>基本操作說明</li><li>三個月問題保固</li></ul></div><div class="include no"><h4>另案評估</h4><ul><li>新增完整模組</li><li>既有架構大改</li><li>大量資料遷移</li><li>第三方服務費用</li></ul></div></div></div><div class="warranty"><div class="big">3 <small>個月</small></div><h3>有問題都算我的。</h3><p>建置完成後不是立刻斷線。三個月內既有功能出現問題，我會處理；到期前也會再確認一次使用狀況。</p></div></div></div></section>
 
-<!-- WORK -->
-<section id="work" class="sec-alt">
-  <div class="wrap">
-    <div class="eyebrow">What I build</div>
-    <h2>做過的事，不是一個個案子，是可組合的積木。</h2>
-    <p class="lead">新的廟進來，是「勾選 + 換皮」，不是從頭重寫。這讓我能把一套東西，穩穩服務很多間廟。</p>
+  <section class="alt" id="lab"><div class="wrap"><div class="eyebrow">Tools &amp; experiments</div><h2>宮廟之外，我也持續做工具。</h2><p class="lead">這些實驗不搶主線，但它們讓我更知道怎麼把 AI、自動化與安全帶回實際工作。</p><div class="lab-grid"><article class="lab-card"><span class="lab-tag">SECURITY</span><h3>本機 CIA 資安檢核器</h3><p>掃描原始碼、整理風險，產出 HTML、PDF、JSON 與修復計畫。</p></article><article class="lab-card"><span class="lab-tag">AI ASSISTANT</span><h3>Discord 遠端工作助手</h3><p>從 Discord 遠端交辦本機 AI 工作，保留對話與安全護欄。</p></article><article class="lab-card"><span class="lab-tag">KNOWLEDGE</span><h3>LINE 筆記問答</h3><p>結合 Notion 與 Gemini，讓 LINE 能從個人筆記整理回答。</p></article><article class="lab-card"><span class="lab-tag">OPEN SOURCE</span><h3>Temple Operator</h3><p>用人工審核、工作佇列與稽核紀錄示範可擴充的自動化引擎。</p></article></div><a class="notion-link" href="https://andesnice.notion.site/Notion-LINE-N8N-GAS-33d8db83bd938149a4d6fd845232f8ef" target="_blank" rel="noopener"><div><b>Notion 完整作品集</b><span>跨產業專案、核心技術與更多整合紀錄</span></div><strong>開啟作品集 →</strong></a></div></section>
 
-    <!-- Flagship -->
-    <div class="flagship">
-      <span class="badge">旗艦案例 ‧ 夥伴級</span>
-      <h3>玄門真宗｜他們的資訊組，就是我</h3>
-      <p>從報名、點燈、法會、科期，到財務報表與內部派工，全上線後有人固定顧著。這不是一份交付物，是一個持續運作的數位大腦。</p>
-      <div class="ba">
-        <div class="before">
-          <div class="k">BEFORE ‧ 數位化前</div>
-          <ul>
-            <li>紙本報名、手動謄寫對帳</li>
-            <li>LINE 群組派工，訊息洗掉就找不回</li>
-            <li>報表靠人加總，容易出錯</li>
-          </ul>
-        </div>
-        <div class="after">
-          <div class="k">AFTER ‧ 上線後</div>
-          <ul>
-            <li>線上表單直接進系統，自動彙總</li>
-            <li>派工、交辦、回報留下紀錄可追</li>
-            <li>收支、稽核、列印一鍵產出</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <section id="faq"><div class="wrap"><div class="eyebrow">Common questions</div><h2>先回答最常被問的三件事。</h2><div class="faq-grid"><article class="faq"><h3>老人家或志工不會用怎麼辦？</h3><p>系統是做給現場的人用，不是做給工程師看。能少一步就少一步，手機字體與按鈕也會照實際使用者調整。</p></article><article class="faq"><h3>是不是一次要做整套？</h3><p>不用。先從最耗時間、最容易出錯的一段開始；確認真的有用，再把下一個模組接上去。</p></article><article class="faq"><h3>做好之後壞掉怎麼辦？</h3><p>買斷建置包含三個月問題保固。系統、版本與規格也會留下紀錄，不把廟方綁在一個只有我知道的黑盒子裡。</p></article></div></div></section>
 
-    <!-- Modules -->
-    <div class="modules">
-      <div class="mod">
-        <div class="ico">📝</div>
-        <h4>報名模組</h4>
-        <p>活動／點燈／法會／科期，共用一套表單引擎，換活動不換系統。</p>
-      </div>
-      <div class="mod">
-        <div class="ico">📊</div>
-        <h4>財務報表模組</h4>
-        <p>收支、稽核、列印一條龍，帳目清楚、對得起管委會。</p>
-      </div>
-      <div class="mod">
-        <div class="ico">🗂️</div>
-        <h4>內部管理模組</h4>
-        <p>休假、派工、交辦、回報，把 LINE 群組的混亂變成可追的流程。</p>
-      </div>
-      <div class="mod">
-        <div class="ico">🔔</div>
-        <h4>通知模組</h4>
-        <p>LINE 推播與提醒，該通知的人自動收到，不用有人盯著發。</p>
-      </div>
-    </div>
-
-    <div class="stack">
-      <span>底層技術：</span>
-      <span class="chip">n8n（自架）</span>
-      <span class="chip">Google Apps Script</span>
-      <span class="chip">Notion</span>
-      <span class="chip">LINE Bot</span>
-      <span style="color:var(--muted)">— 省錢、穩定、我自己維護。</span>
-    </div>
-
-    <div class="arch">
-      <div class="arch-head">
-        <h3>Notion + n8n：為什麼要串？</h3>
-        <p>Notion 內部自己連動，n8n 讓它「對外串接」＋「自己會跑」。</p>
-      </div>
-
-      <div class="arch-flow">
-        <div class="node">
-          <div class="nt">前端表單</div>
-          <div class="ns">GAS ‧ 報名／供品／填報</div>
-        </div>
-        <div class="conn"><span>送出</span><span class="ar">→</span></div>
-        <div class="node hub">
-          <div class="nt">n8n</div>
-          <div class="ns">自動化中樞 ‧ 減震層</div>
-        </div>
-        <div class="conn"><span>寫入 ‧ 查詢</span><span class="ar">→</span></div>
-        <div class="node db">
-          <div class="nt">資料庫</div>
-          <div class="ns">Notion ‧ 主資料庫</div>
-        </div>
-      </div>
-
-      <div class="arch-sub">n8n 同時分流 <span class="ar">↓</span></div>
-      <div class="arch-branches">
-        <div class="branch">
-          <span class="blabel">定時提醒</span>
-          <div class="node">
-            <div class="nt">LINE</div>
-            <div class="ns">提醒／即時通知</div>
-          </div>
-        </div>
-        <div class="branch">
-          <span class="blabel">容錯備援</span>
-          <div class="node">
-            <div class="nt">Google Sheet</div>
-            <div class="ns">備援 ‧ 自動降級補回</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="arch-pill">Notion 負責給人看，n8n 負責讓它跑</div>
-      <p class="arch-cap">前端只負責收，<b>n8n 當減震層</b>把資料穩穩寫進 Notion——這就是我說的<b>「讀砍寫留」</b>。</p>
-    </div>
-
-    <!-- Cross-industry -->
-    <div class="xp-head">
-      <h3>同一套積木，也搬得去別的產業。</h3>
-      <p>模組化的好處是——不只宮廟能用。同樣的表單引擎、自動化與資料庫，換個場景就能落地：</p>
-    </div>
-    <div class="grid3">
-      <div class="card">
-        <div class="ind">房仲業</div>
-        <h3>傭金自動分潤平台</h3>
-        <p>多層次分潤計算引擎：業務動態拆帳、公司抽成、流水帳分類，外加互動控制面板與 CRM。</p>
-      </div>
-      <div class="card">
-        <div class="ind">牙科診所</div>
-        <h3>智慧排班系統</h3>
-        <p>可視化排班資料庫，支援班表調整與人員管理，新創診所也能快速上手。</p>
-      </div>
-      <div class="card">
-        <div class="ind">LINE@ 社群</div>
-        <h3>群組資訊管理系統</h3>
-        <p>24 小時自動助理：群組訊息自動分類存進 Notion，還能在 LINE 直接查歷史紀錄，解決洗版難追溯。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NOTION -->
-<section id="notion">
-  <div class="wrap">
-    <div class="eyebrow">Notion portfolio</div>
-    <h2>我不只用 Notion 做系統，連我的整份作品集都是 Notion 做的。</h2>
-    <p class="lead">關於我、核心技術、跨產業的代表專案、N8N × Notion × LINE × GAS 的整合實績——全部用 Notion 排出來。這頁本身，就是我會用 Notion 最直接的證明。</p>
-
-    <a class="notion-card" href="https://andesnice.notion.site/Notion-LINE-N8N-GAS-33d8db83bd938149a4d6fd845232f8ef" target="_blank" rel="noopener" style="text-decoration:none">
-      <div class="nbook">🧑‍💻</div>
-      <div class="nbody">
-        <h3>Notion 作品集 ‧ 遊走在數位工具的積木旅者</h3>
-        <p style="color:var(--ink-soft);font-size:16px">關於我 / 核心技術能力 / 代表專案 / 四方整合實績，一頁看完。</p>
-        <div class="ntopics">
-          <span>Notion 資料庫</span>
-          <span>LINE@ Bot</span>
-          <span>n8n 自動化</span>
-          <span>Google Apps Script</span>
-        </div>
-      </div>
-      <span class="btn btn-primary nbtn">在 Notion 開啟 →</span>
-    </a>
-
-    <p class="notion-why">用 Notion 做作品集，本身就是作品——你看到的排版、連動、資料庫，都是 Notion 排出來的。<b>它能把一個人怎麼做事，攤開來給你看。</b></p>
-  </div>
-</section>
-
-<!-- SERVICE / PRICING -->
-<section id="service">
-  <div class="wrap">
-    <div class="eyebrow">Service &amp; Pricing</div>
-    <h2>建置費是入場，維護才是我陪你走下去。</h2>
-    <p class="lead">你怕的不是價錢，是「壞掉沒人修」。所以我把系統賣得像一位固定顧著的資訊人員，而不是一份交出去就斷線的程式碼。</p>
-
-    <!-- Build fee -->
-    <div class="build">
-      <div class="row head"><span class="label">建置費（一次性，參考值）</span><span class="val">NT$</span></div>
-      <div class="row"><span class="label">基礎建置（1 報名模組 + LINE 通知 + 基礎報表）</span><span class="val">30,000 – 50,000</span></div>
-      <div class="row"><span class="label">每加一個模組</span><span class="val">+ 8,000 – 15,000</span></div>
-      <div class="row"><span class="label">功能完整的廟</span><span class="val">60,000 – 120,000</span></div>
-    </div>
-
-    <!-- Maintenance tiers -->
-    <h2 style="margin-top:54px;font-size:24px">每月維護方案（三級）</h2>
-    <p class="price-note">建置費收完就沒了；月費，才是讓系統一直有人顧著的關鍵。</p>
-    <div class="tier-grid">
-      <div class="tier">
-        <div class="tname">顧著級</div>
-        <div class="tprice">NT$2,000–3,000<small> / 月</small></div>
-        <p>系統正常運作、出事修復、每月一次小調整。防「爛掉沒人管」的底線方案。</p>
-      </div>
-      <div class="tier featured">
-        <div class="flag">多數廟落此級</div>
-        <div class="tname">成長級</div>
-        <div class="tprice">NT$4,000–6,000<small> / 月</small></div>
-        <p>顧著級全含，再加每月固定時數：微調、新表單、報表調整。活躍的廟最適合。</p>
-      </div>
-      <div class="tier">
-        <div class="tname">夥伴級</div>
-        <div class="tprice">NT$8,000–10,000<small> / 月</small></div>
-        <p>等於我就是你們的資訊組——優先處理、可預約、新活動主動上架。玄門真宗屬此級。</p>
-      </div>
-    </div>
-
-    <!-- Scope -->
-    <div class="scope">
-      <div class="inc">
-        <h4>維護包含</h4>
-        <ul>
-          <li>系統維持運作</li>
-          <li>既有功能故障修復</li>
-          <li>約定時數內的小調整</li>
-        </ul>
-      </div>
-      <div class="exc">
-        <h4>另案報價（不含在維護內）</h4>
-        <ul>
-          <li>全新模組</li>
-          <li>架構大改</li>
-          <li>資料大批遷移</li>
-          <li>第三方服務月費</li>
-        </ul>
-      </div>
-    </div>
-    <p class="price-note" style="margin-top:16px">※ 以上為參考範圍，實際依廟方需求與模組數量報價。範圍白紙黑字寫清楚，是為了讓合作長長久久、彼此都安心。</p>
-  </div>
-</section>
-
-<!-- FEARS -->
-<section id="fears" class="sec-alt">
-  <div class="wrap">
-    <div class="eyebrow">Your concerns</div>
-    <h2>找我之前，你大概在擔心這三件事。</h2>
-    <p class="lead">我懂，因為這正是每一間廟都會問的。</p>
-
-    <div class="fear">
-      <div class="q"><span class="mk">「</span>會不會很貴？<span class="mk">」</span></div>
-      <p>比起請人手動處理、或買一套用不順的貴系統，我走的是自架省錢路線，而且能從一個模組開始、有需要再加。花小錢先把最痛的一塊自動化，比一次砸大錢更實在。</p>
-    </div>
-
-    <div class="fear">
-      <div class="q"><span class="mk">「</span>老人家、志工阿姨不會用怎麼辦？<span class="mk">」</span></div>
-      <p>系統是做給現場的人用的，不是做給工程師看的。表單能多簡單就多簡單，我會陪志工阿姨一步步設定到她自己會用為止——這件事我很有耐心。</p>
-    </div>
-
-    <div class="fear ace">
-      <div class="q"><span class="mk">「</span>做好之後沒人維護怎麼辦？<span class="mk">」</span><span class="ace-tag">我的本業</span></div>
-      <p>這正是我最能理直氣壯回答的一題。我是維護工程師出身，我賣的從來不只是「做好」，而是「一直有人顧著」。系統會活著、會被修、會跟著你的活動一起長大——這是月維護方案存在的全部意義。</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="eyebrow" style="color:var(--gold-soft)">Let's talk</div>
-    <h2>先聊聊你廟裡最頭痛的那一塊。</h2>
-    <p class="lead">不用先想清楚要做什麼系統。把現在最亂、最花時間的地方講給我聽，我幫你看哪裡能先自動化。</p>
-    <div class="contact-links">
-      <a href="mailto:andesnice@gmail.com">✉ Email</a>
-      <a href="https://www.facebook.com/ye.zi.9279" target="_blank" rel="noopener">f Facebook</a>
-      <a href="https://www.threads.com/@andesnice" target="_blank" rel="noopener">@ Threads</a>
-      <a href="https://www.instagram.com/andesnice/" target="_blank" rel="noopener">◎ Instagram</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 韋銘 ‧ 宮廟數位化 ｜ 維護工程師 ‧ 宮廟資訊人員 ‧ 兩寶爸
-</footer>
-
+  <section class="contact" id="contact"><div class="wrap"><div class="eyebrow">Let's talk</div><h2>先說說廟裡最頭痛的那一段。</h2><p class="lead">不用先想好要買什麼系統。把現在最亂、最花時間、最容易出錯的地方說給我聽，我先幫你判斷適不適合自動化。</p><div class="contact-links"><a href="mailto:andesnice@gmail.com">✉ Email</a><a href="https://www.facebook.com/ye.zi.9279" target="_blank" rel="noopener">Facebook</a><a href="https://www.threads.com/@andesnice" target="_blank" rel="noopener">Threads</a><a href="https://www.instagram.com/andesnice/" target="_blank" rel="noopener">Instagram</a></div></div></section>
+</main>
+<footer>© 2026 韋銘｜宮廟數位化維護工程師</footer>
 </body>
 </html>
