@@ -17,8 +17,9 @@
 - 2026-09-28 以本機 HTTP 伺服器實測回 HTTP 200，頁面標題載入正確。
 - 2026-09-28 已完成 1440×2200 桌機與 500px 窄版（2x 輸出）截圖驗收；窄版導覽、單欄內容與儀表板均完整顯示。
 - 驗收截圖：`screenshots/2026-09-28-desktop-final.png`、`screenshots/2026-09-28-mobile-500-2x.png`。
-- 尚未推送 GitHub，也尚未更新 GitHub Pages 正式網站。
+- 2026-09-28 已推送 GitHub `main`，改版提交為 `1f44b67`；GitHub Pages 部署工作 `36374988857` 完成且結果為 `success`。
+- 正式網址 `https://andesnice.github.io/temple-digital/` 回 HTTP 200；已回讀確認新版標題、買斷建置、關懷系統「準備上線」及介面示意標示均已生效，並完成正式頁面截圖檢查。
 
 ## 下一步
 
-1. 經使用者核可後 commit、push，等待 GitHub Pages 更新並回看正式網站。
+1. 後續若取得不含個資的真實系統畫面，可逐步取代首頁的介面示意圖。
