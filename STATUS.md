@@ -4,7 +4,10 @@
 
 - 「工具與實驗」區新增「個人 AI 助理『龍蝦』與新手安裝包」說明與連結，連到公開倉庫 <https://github.com/andesnice/personal-lobster-kit>（安裝包 v5.1，Windows／Mac／Linux，Docker 優先，不含金鑰與私人資料）。
 - 文案界線：只說明用途與公開狀態；明講實機安裝與首次 AI 回覆需使用者本人驗收，不宣稱已有人完成安裝。未公開自己的助理設定、頻道、客戶或內部流程。
-- 驗證：頁內連結與 ID 檢查、`git diff --check`。發布後的正式網址檢查見下方「發布驗證」。
+- 驗證：頁內連結與 ID 檢查、`git diff --check`。發布後檢查如下。
+
+- 發布驗證：內容提交 `5f10fae` 已推送 main；[GitHub Pages 部署工作 44267635234](https://github.com/andesnice/temple-digital/actions/runs/44267635234) 為 `completed / success`。正式網址 HTTP 200，HTML 與本機逐字相同（統一換行後），含安裝包連結；安裝包倉庫公開頁 HTTP 200。
+- 未驗證：新區塊在桌機／手機實際畫面的目視檢查（本輪瀏覽器只取得縮小的整頁截圖，看不清細節，未做橫向溢出量測）；沿用既有 .lab-highlight 與 .notion-link 樣式，未新增 CSS，風險低。
 
 ## 2026-11-17 森林風格更新
 
